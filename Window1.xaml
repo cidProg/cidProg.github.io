@@ -1,0 +1,451 @@
+﻿<Window x:Class="Verwaltung_grafisch.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Verwaltung_grafisch"
+        mc:Ignorable="d"
+        Title="Window1" Height="530" Width="650">
+    <Grid x:Name="Grid1" RenderTransformOrigin="0.499,0.528">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="144*" />
+            <RowDefinition Height="113*" />
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="\Bilder\Hintergrundbild.jpg" />
+        </Grid.Background>
+
+
+
+        <!-- oben -->
+
+        <Border Grid.Row="0" x:Name="StackPanel_oben_Window1"  BorderBrush="#FF000000" BorderThickness="0" CornerRadius="20" Margin="10,10,10,0">
+            <Border.Background>
+                <SolidColorBrush Color="white" Opacity="0.3"/>
+            </Border.Background>
+            <StackPanel>
+
+
+                <Grid Width="1023" HorizontalAlignment="Left" Height="209">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" FontFamily="Roboto" HorizontalAlignment="Left"  Padding="10,10,0,0" Foreground="White"><Bold>Kundenverwaltungsbereich</Bold></TextBlock>
+                    <TextBlock x:Name="txt_tragung" Grid.Column="0" Grid.Row="0"  FontSize="20" FontFamily="Roboto" HorizontalAlignment="Left" Margin="0,0,0,10" Padding="10,40,0,0" Foreground="White">Tragen Sie die Kundennummer ein</TextBlock>
+
+
+                    <TextBlock x:Name="txt_tragun" Grid.Row="0"  FontSize="18" FontFamily="Roboto" HorizontalAlignment="Left"  Padding="0,20,0,10" Grid.ColumnSpan="2" Margin="371,0,0,0" Width="352" Foreground="White"><Bold>Bestellung</Bold></TextBlock>
+
+
+                    <!-- textbox suche und button-->
+
+                    <Border CornerRadius="10,10,0,0" Width="175" Margin="28,77,308,109">
+                        <Border.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                        </Border.Resources>
+                        <Border.Background>
+                            <SolidColorBrush Color="#ffffff" Opacity="0.35"/>
+                        </Border.Background>
+                        <TextBox x:Name="txt_suche_kunde" BorderThickness="0" HorizontalAlignment="Center" Width="155" Foreground="White" Text="">
+                            <TextBox.Background>
+                                <SolidColorBrush  Opacity="0"/>
+                            </TextBox.Background>
+                        </TextBox>
+                    </Border>
+                    <Rectangle  Fill="White" HorizontalAlignment="Left" Height="1" Width="175" Margin="28,100,0,108"/>
+
+
+                    <Button x:Name="Button_suchen" Click="Button_suchen_Click" HorizontalAlignment="Left" Content="Suchen" BorderThickness="0" FontSize="15" FontFamily="Roboto" Height="25" Width="100"  BorderBrush="{x:Null}"  Margin="213,77,0,107" Foreground="White">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F7931E"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value=" #F9A94B"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#FABE78"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+
+
+                    <Label x:Name="lbl_suche_fehler" Foreground="Red" FontSize="10" FontFamily="Roboto" HorizontalAlignment="Center" Padding="0,1110,0,0" Background="White"></Label>
+
+                    <Label x:Name="lbl_ausgabe_kunde_kurz1" Grid.Column="0" Grid.Row="0"  FontSize="15" FontFamily="Roboto" HorizontalAlignment="Left" Padding="10,110,0,0" Foreground="White">Kundendaten</Label>
+                    <Label x:Name="lbl_ausgabe_kunde_kurz2" Grid.Column="0" Grid.Row="0"  FontSize="15" FontFamily="Roboto" HorizontalAlignment="Left" Padding="10,130,0,0" Foreground="White">Name:</Label>
+
+                    <Label x:Name="lbl_ausgabe_kunde_kurz3" Grid.Column="0" Grid.Row="0"  FontSize="15" FontFamily="Roboto" HorizontalAlignment="Left" Padding="10,150,0,0" Foreground="White">Telefon:</Label>
+                    <Label x:Name="lbl_ausgabe_kunde_kurz4" Grid.Column="0" Grid.Row="0"  FontSize="15" FontFamily="Roboto" HorizontalAlignment="Left" Padding="10,170,0,0" Foreground="White">Mail:</Label>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <Grid x:Name="grid_bestell_produktnummer" Width="1146" HorizontalAlignment="Left" Height="209" Margin="358,0,0,0" Grid.ColumnSpan="2" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="97*"/>
+                            <ColumnDefinition Width="1049*"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Border CornerRadius="10,10,0,0" Height="22" Width="122" Margin="10,56,1014,131" Grid.ColumnSpan="2">
+                            <Border.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="4"/>
+                                </Style>
+                            </Border.Resources>
+                            <Border.Background>
+                                <SolidColorBrush Color="#ffffff" Opacity="0.35"/>
+                            </Border.Background>
+                            <TextBox x:Name="txt_bestell_produktnummer" BorderThickness="0" HorizontalAlignment="Left" Width="160" Margin="10,0,0,0" Foreground="White" Text="">
+                                <TextBox.Background>
+                                    <SolidColorBrush  Opacity="0"/>
+                                </TextBox.Background>
+                            </TextBox>
+                        </Border>
+                        <Rectangle  Fill="White" HorizontalAlignment="Left" Height="1" Width="122" Margin="10,78,0,130" Grid.ColumnSpan="2"/>
+                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="Produktnummer" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,58,0,0" Foreground="DarkGray" Grid.ColumnSpan="2">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=txt_bestell_produktnummer}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+
+
+
+                    <Grid Grid.Column="1" Height="30" Margin="212,62,11,0" VerticalAlignment="Top">
+                        <Border CornerRadius="10,0,0,0" Margin="-219,-7,422,14">
+                            <Border.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="4"/>
+                                </Style>
+                            </Border.Resources>
+                            <Border.Background>
+                                <SolidColorBrush Color="#ffffff" Opacity="0.35"/>
+                            </Border.Background>
+                            <TextBox x:Name="txtNum" x:FieldModifier="private" FontSize="14" Text="0" TextChanged="txtNum_TextChanged" BorderThickness="0" Height="22" Margin="10,1,-106,-1" Foreground="White" RenderTransformOrigin="0.5,0.5" >
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="0.395"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                                <TextBox.Background>
+                                    <SolidColorBrush  Opacity="0"/>
+                                </TextBox.Background>
+                            </TextBox>
+                        </Border>
+                        <Rectangle  Fill="white" HorizontalAlignment="Left" Height="1" Width="86" Margin="-219,16,0,13"/>
+                        <Button x:Name="cmdUp" x:FieldModifier="private" BorderThickness="0" FontSize="10" Padding="0,-4,0,0" Content="▲"  Click="cmdUp_Click" Margin="-130,-7,408,0" RenderTransformOrigin="-6.175,1.465"  VerticalAlignment="Top" Foreground="White" Height="7" Width="10">
+                            <Button.Background>
+                                <SolidColorBrush  Opacity="0"/>
+                            </Button.Background>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#80c1ff"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#b3daff"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button x:Name="cmdDown" x:FieldModifier="private" BorderThickness="0" FontSize="10" Padding="0,-4,0,0" Content="▼" Click="cmdDown_Click" Margin="-130,8,408,14" RenderTransformOrigin="-7.475,3.465" Foreground="White">
+                            <Button.Background>
+                                <SolidColorBrush  Opacity="0"/>
+                            </Button.Background>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#80c1ff"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#b3daff"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+
+
+
+
+
+                    <Button x:Name="Button_bestellung_neu" Click="Button_bestellung_neu_Click" Content="Bestellen"  BorderThickness="0" FontSize="15" FontFamily="Roboto" Height="25" Width="100"  BorderBrush="{x:Null}" Foreground="White" Margin="371,92,40,92">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F7931E"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F9A94B"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#FABE78"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+                    <Grid x:Name="grid_bestell_bestellnummer" Width="1146" HorizontalAlignment="Left" Height="209" Margin="358,0,0,0" Grid.ColumnSpan="2" >
+
+
+
+                        <Border CornerRadius="10,10,0,0" Height="22" Width="122" Margin="10,130,1014,57">
+                            <Border.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="4"/>
+                                </Style>
+                            </Border.Resources>
+                            <Border.Background>
+                                <SolidColorBrush Color="#ffffff" Opacity="0.35"/>
+                            </Border.Background>
+                            <TextBox  x:Name="txt_bestell_bestellnummer" BorderThickness="0" Width="80"    HorizontalAlignment="Left" Margin="10,2,0,0"  Foreground="White" Text="">
+                                <TextBox.Background>
+                                    <SolidColorBrush  Opacity="0"/>
+                                </TextBox.Background>
+                            </TextBox>
+                        </Border>
+
+
+
+
+
+                        <Rectangle  Fill="white" HorizontalAlignment="Left" Height="1" Width="122" Margin="10,152,0,56"/>
+                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="Bestellnummer" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="19,132,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=txt_bestell_produktnummer}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+
+
+
+                    <Button x:Name="Button_bestellung_loeschen" Click="Button_bestellung_loeschen_Click" Content="Bestellung Löschen"  BorderThickness="0" FontSize="15" FontFamily="Roboto" Height="25"  BorderBrush="{x:Null}" Foreground="White" Margin="371,166,6,17">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#ff3300"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#ff4d4d"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="#ff6666"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </Grid>
+
+
+
+                <ListView Margin="-12,0,-12,202" Name="kunde_lang" BorderThickness="0" SelectionChanged="lvUsers_SelectionChanged" Grid.ColumnSpan="2" BorderBrush="#FF0E2F6D" Opacity="0.79" Foreground="#FF081D56" Height="43" Width="534">
+
+                    <ListView.Background>
+                        <SolidColorBrush Color="#FFE2B3B3" Opacity="0.5"/>
+                    </ListView.Background>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="BorderBrush" Value="LightGray" />
+                            <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            <Setter Property="FontSize" Value="14" />
+                            <Setter Property="FontFamily" Value="Roboto" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+
+                    <ListView.View>
+
+                        <GridView>
+                            <GridViewColumn Header="Kundennummer" Width="100" DisplayMemberBinding="{Binding Kundennummer}" />
+                            <GridViewColumn Header="Ansprechpartner" Width="120" DisplayMemberBinding="{Binding Ansprechpartner}" />
+                            <GridViewColumn Header="Vertrag" Width="60" DisplayMemberBinding="{Binding Vertrag}" />
+                            <GridViewColumn Header="Treuepunkte" Width="70" DisplayMemberBinding="{Binding Treuepunkte}" />
+                            <GridViewColumn Header="Eintritt" Width="90" DisplayMemberBinding="{Binding Eintritt}" />
+                            <GridViewColumn Header="letzter Kontakt" Width="90" DisplayMemberBinding="{Binding letzterKontakt}" />
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+
+
+
+
+
+
+
+
+            </StackPanel>
+        </Border>
+        <!-- unten -->
+
+
+
+        <Border Grid.Row="1" x:Name="StackPanel_oben_Window12"  BorderBrush="#FF000000" BorderThickness="0" CornerRadius="45" Margin="54,10,54,10">
+            <Border.Background>
+                <SolidColorBrush Color="white" Opacity="0.3"/>
+            </Border.Background>
+
+            <StackPanel  Margin="40,24,40,10" x:Name="StackPanel_unten_Window1" Grid.Row="1">
+                <ListView x:Name="lvUsers" BorderThickness="0" SelectionChanged="lvUsers_SelectionChanged" Height="158" Width="362">
+                    <ListView.Background>
+                        <SolidColorBrush Color="#FFE2B3B3" Opacity="0.5"/>
+                    </ListView.Background>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="BorderBrush" Value="LightGray" />
+                            <Setter Property="BorderThickness" Value="0,0,0,1" />
+                            <Setter Property="FontSize" Value="14" />
+                            <Setter Property="FontFamily" Value="Roboto" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.View>
+
+                        <GridView>
+                            <GridViewColumn Header="Bestellnummer" Width="100" DisplayMemberBinding="{Binding Bestellnummer}" />
+                            <GridViewColumn Header="Produktnummer" Width="100" DisplayMemberBinding="{Binding Produktnummer}" />
+                            <GridViewColumn Header="Anzahl" Width="70" DisplayMemberBinding="{Binding Anzahl}" />
+                            <GridViewColumn Header="Preis" Width="90" DisplayMemberBinding="{Binding Preis}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
