@@ -1,0 +1,168 @@
+<Window x:Class="Verwaltung_grafisch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Verwaltung_grafisch"
+        mc:Ignorable="d"
+        Title="MainWindow" ResizeMode="NoResize" Height="400" Width="700" >
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--
+        <Border Background="#99ccff" Height="auto" Grid.Column="0" />
+        <Border Background="#99ccff" Height="auto" Grid.Column="1" />
+        -->
+
+        <Grid.Background>
+            <ImageBrush ImageSource="\Bilder\Hintergrundbild.jpg" />
+        </Grid.Background>
+
+
+        <!--  Rechts  -->
+        <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="20" Margin="10">
+            <Border.Background>
+                <SolidColorBrush Color="white" Opacity="0.3"/>
+            </Border.Background>
+            <StackPanel>
+
+                <Label x:Name="lbl_gruß" FontSize="25" FontFamily="Roboto" Padding="0,60,0,0" HorizontalAlignment="Center" Content="Willkommen!" Foreground="White"/>
+
+                <!--
+                <Border Grid.Column="0" CornerRadius="50,50,50,50" Height="140" Width="140" Margin="130,242,130,152" >
+                    <Border.Background>
+                        <ImageBrush  ImageSource="\Bilder\logo.png" />
+                    </Border.Background>
+                </Border>
+                 -->
+                <Border Padding="0,50,0,0" HorizontalAlignment="Center">
+                    <Image  Source="\Bilder\logo.png" Height="100" Width="160" />
+                </Border>
+                <TextBlock  FontSize="20" FontFamily="Roboto" HorizontalAlignment="Center" Padding="0,20,0,0" Height="154" Foreground="White"><Bold><Run Text="Kundenverwaltung"/></Bold></TextBlock>
+
+            </StackPanel>
+        </Border>
+
+        <!--  Links  -->
+
+        <Border Grid.Column="1" BorderBrush="#FF000000" BorderThickness="0" CornerRadius="20" Margin="10">
+            <Border.Background>
+                <SolidColorBrush Color="white" Opacity="0.3"/>
+            </Border.Background>
+            <StackPanel   Margin="15" x:Name="StackPanel">
+
+                <TextBlock Grid.Column="1"  FontSize="30" FontFamily="Roboto" HorizontalAlignment="Center" Margin="20" Padding="0,10,0,0" Foreground="White"><Bold>Anmeldung</Bold></TextBlock>
+
+
+                <Label Grid.Column="1"  FontSize="20" FontFamily="Roboto" HorizontalAlignment="Center" Padding="0,20,0,0" Foreground="White">Benutzername</Label>
+                <Border CornerRadius="10,10,0,0" Height="22" Width="244">
+                    <Border.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Border.Resources>
+                    <Border.Background>
+                        <SolidColorBrush Color="#ffffff" Opacity="0.35"/>
+                    </Border.Background>
+                    <TextBox x:Name="txt_benutzername" Grid.Column="1" BorderThickness="0" HorizontalAlignment="Center" Height="22" Width="244" Foreground="White">
+                        <TextBox.Background>
+                            <SolidColorBrush  Opacity="0"/>
+                        </TextBox.Background>
+                    </TextBox>
+                </Border>
+                <Rectangle  Fill="White" HorizontalAlignment="Center" Height="1" Width="244"/>
+                <Label x:Name="lbl_benutzername_fehler" Foreground="Red" FontSize="10" FontFamily="Roboto" HorizontalAlignment="Center" Padding="0,0,0,0" Background="White"></Label>
+
+
+                <Label Grid.Column="1"  FontSize="20" FontFamily="Roboto" HorizontalAlignment="Center" Padding="0,20,0,0" Foreground="White">Passwort</Label>
+
+                <Border CornerRadius="10,10,0,0" Height="22" Width="244">
+                    <Border.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Border.Resources>
+                    <Border.Background>
+                        <SolidColorBrush Color="#ffffff" Opacity="0.35"/>
+                    </Border.Background>
+                    <PasswordBox x:Name="txt_passwort" Grid.Column="1" BorderThickness="0" HorizontalAlignment="Center" Height="22" Width="244" Foreground="White">
+                        <PasswordBox.Background>
+                            <SolidColorBrush  Opacity="0"/>
+                        </PasswordBox.Background>
+                    </PasswordBox>
+                </Border>
+                <Rectangle  Fill="White" HorizontalAlignment="Center" Height="1" Width="244"/>
+                <Label x:Name="lbl_passwort_fehler" Foreground="Red" FontSize="10" FontFamily="Roboto" HorizontalAlignment="Center" Padding="0,0,0,0" Background="White"></Label>
+
+
+
+                <!--
+                <Button x:Name="Button_loIn" Click="Button_logIn_Click" Background="#ff0000" Content="Log in" BorderThickness="0" FontSize="15" FontFamily="Roboto" Height="30" Width="164" Margin="20" >
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                
+                </Button>
+                -->
+
+                <Button x:Name="Button_logIn" Click="Button_logIn_Click" Content="Log in" BorderThickness="0" FontSize="15" FontFamily="Roboto" Height="30" Width="164"  BorderBrush="{x:Null}" Foreground="#ffffff" Margin="15">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value=" #F7931E"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F9A94B"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#FABE78"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+
+                <!--
+                <TextBox x:Name="blockToUnderline" Grid.Column="1" BorderThickness="0" HorizontalAlignment="Center" Height="22" Width="244" TextDecorations="Underline" Opacity="0.2"></TextBox>
+                <Rectangle  Fill="#e63a00" Height="1" Width="{Binding ElementName=blockToUnderline, Path=ActualWidth}"/>
+                -->
+
+
+
+
+            </StackPanel>
+        </Border>
+
+
+
+
+
+
+
+    </Grid>
+
+
+
+
+
+</Window>

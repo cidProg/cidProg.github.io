@@ -1,0 +1,35 @@
+CREATE TABLE [dbo].[Kundenverwaltung_kurz] (
+    [Kundennummer]  INT          NOT NULL,
+    [NameOderFirma] VARCHAR (50) NULL,
+    [Telefon]       NCHAR (10)   NULL,
+    [Mail]          VARCHAR (50) NULL,
+    CONSTRAINT [PK_Kundenverwaltung_kurz] PRIMARY KEY CLUSTERED ([Kundennummer] ASC)
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[Kundenverwaltung_genau] (
+    [Kundennummer]           INT                NOT NULL,
+    [Ansprechpartner]        VARCHAR (50)       NULL,
+    [Vertrag]                BIT                NULL,
+    [Treuepunkte]            INT                NULL,
+    [Eintritt]               DATETIMEOFFSET (7) NULL,
+    [gekaufteProdukte]       VARCHAR (50)       NULL,
+    [letzterKaufOderKontakt] DATETIMEOFFSET (7) NULL,
+    CONSTRAINT [FK_Kundenverwaltung_genau_Kundenverwaltung_kurz] FOREIGN KEY ([Kundennummer]) REFERENCES [dbo].[Kundenverwaltung_kurz] ([Kundennummer])
+);
+
+
+
+
+CREATE TABLE [dbo].[Bestellungen] (
+    [Kundennummer]  INT           NOT NULL,
+    [Bestellnummer] NVARCHAR (50) NULL,
+    [Produktnummer] NVARCHAR (50) NULL,
+    [Anzahl]        INT           NULL,
+    [Preis]         INT           NULL,
+    CONSTRAINT [Bestellungen_Kundenverwaltung_kurz] FOREIGN KEY ([Kundennummer]) REFERENCES [dbo].[Kundenverwaltung_kurz] ([Kundennummer])
+);
